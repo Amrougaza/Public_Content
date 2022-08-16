@@ -340,3 +340,4 @@ If you do not wish to restart you computer at this time please click on the canc
  
 }
 #endregion Source: MainForm.psf
+Main ($CommandLine)
