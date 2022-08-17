@@ -1,4 +1,4 @@
-Start-Transcript -Path c:\windows\temp\forticlient_uninstall-result.log -Append
+Start-Transcript -Path c:\temp\forticlient_uninstall-result.log -Append
 <#
  .NOTES
  --------------------------------------------------------------------------------
