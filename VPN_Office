@@ -1,0 +1,20 @@
+$list = Get-WmiObject Win32_Product
+for($i=0; $i -lt $list.Count; $i++){
+    #Write-host $list[$i].name
+    if($list[$i].name -eq 'FortiClient VPN'){
+
+		if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Fortinet\FortiClient\Sslvpn\Tunnels\VPN_Office") -ne $true) 
+			{  
+				Write-host "Adding VPN Office Profile"
+				New-Item "HKLM:\SOFTWARE\Fortinet\FortiClient\Sslvpn\Tunnels\VPN_Office" -force -ea SilentlyContinue ;
+				New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Fortinet\FortiClient\Sslvpn\Tunnels\VPN_Office' -Name 'Description' -Value 'VPN_Office' -PropertyType String -Force -ea SilentlyContinue;
+				New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Fortinet\FortiClient\Sslvpn\Tunnels\VPN_Office' -Name 'Server' -Value 'vpn-office.explore-blue.com:443' -PropertyType String -Force -ea SilentlyContinue;
+				New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Fortinet\FortiClient\Sslvpn\Tunnels\VPN_Office' -Name 'promptusername' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
+				New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Fortinet\FortiClient\Sslvpn\Tunnels\VPN_Office' -Name 'promptcertificate' -Value 0 -PropertyType DWord -Force -ea SilentlyContinue;
+				New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Fortinet\FortiClient\Sslvpn\Tunnels\VPN_Office' -Name 'ServerCert' -Value '0' -PropertyType String -Force -ea SilentlyContinue;
+	
+    }
+else {Write-host "VPN Office Profile exist"}
+
+	}
+}
