@@ -1,3 +1,4 @@
+Start-Transcript -Path c:\temp\forticlient_OfficeProfile-result1.log -Append
 $list = Get-WmiObject Win32_Product
 for($i=0; $i -lt $list.Count; $i++){
     #Write-host $list[$i].name
@@ -18,3 +19,4 @@ else {Write-host "VPN Office Profile exist"}
 
 	}
 }
+Stop-Transcript
